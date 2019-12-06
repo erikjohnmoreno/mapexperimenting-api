@@ -1,0 +1,11 @@
+development: &default
+  adapter: postgresql
+  encoding: utf8
+  database: <%= ENV['DB_NAME'] || 'dev_app_api' %>
+  username: <%= ENV['DB_USERNAME'] || 'app_api' %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: localhost
+
+test:
+  <<: *default
+  database: test_app_api

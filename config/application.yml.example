@@ -1,0 +1,4 @@
+development:
+  sparkpost_api_key: SAMPLEuSPARKPOSTuAPIuKEY0000000000000000
+test:
+  sparkpost_api_key: SAMPLEuSPARKPOSTuAPIuKEY0000000000000000

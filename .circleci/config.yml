@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/app_api
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          CC_TEST_REPORTER_ID: PLACEH0LDER_CC_TEST_REP0RTER_ID
+      - image: circleci/postgres:11.3-alpine-ram
+        environment:
+          POSTGRES_DB: test_app_api
+          POSTGRES_USER: app_api
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: app-api-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: gem install bundler --no-document
+      - run: bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: app-api-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 30s
+
+      # Setup the environment
+      - run: mv config/application.yml.example config/application.yml
+      - run: mv config/database.yml.example config/database.yml
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Run tests
+          command: |
+            ./cc-test-reporter before-build
+            bundle exec rake
+            ./cc-test-reporter after-build -t simplecov --exit-code $?
