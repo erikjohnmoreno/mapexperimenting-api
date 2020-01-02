@@ -44,6 +44,9 @@ GEM
       tzinfo (~> 1.1)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    api-versions (1.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
     arel (9.0.0)
     bcrypt (3.1.13)
     bootsnap (1.4.5)
@@ -215,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  api-versions (~> 1.0)
   bcrypt
   bootsnap (>= 1.1.0)
   capistrano (~> 3.10)

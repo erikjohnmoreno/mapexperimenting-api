@@ -11,6 +11,7 @@ gem 'sparkpost_rails'
 gem 'ransack'
 gem 'rack-cors'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'api-versions', "~> 1.0"
 
 group :development, :test do
   gem 'pry-rails'
