@@ -24,7 +24,7 @@ namespace :deploy do
       within release_path do
         with rails_env: fetch(:rails_env) do
           execute "pkill -9 -f 'rb-fsevent|rails|spring|puma' || echo FAILED"
-          execute "cd #{current_path} && RAILS_ENV=production ~/.rvm/bin/rvm 2.6.5@map-experimenting-api do bundle exec puma -t 1:1 -w 1 -d"
+          execute "cd #{current_path} && RAILS_ENV=production ~/.rvm/bin/rvm 2.6.5@mapexperimenting-api do bundle exec puma -t 1:1 -w 1 -d"
         end
       end
     end
