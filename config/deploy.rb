@@ -9,7 +9,7 @@ set :bundle_without, [:development, :test]
 set :ssh_options, { forward_agent: true }
 set :log_level, :debug
 
-set :linked_files, %w{config/puma.rb config/application.yml config/database.yml config/secrets.yml}
+set :linked_files, %w{puma.rb config/application.yml config/database.yml config/secrets.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle}
 
 set :keep_releases, 1
