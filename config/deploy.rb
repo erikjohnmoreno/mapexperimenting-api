@@ -2,8 +2,8 @@ lock '~> 3.11.0'
 
 # TODO: replace app-api with your APP_NAME
 
-set :application, 'app-api'
-set :repo_url, 'git@github.com:sourcepad/app-api.git'
+set :application, 'map-experimenting-api'
+set :repo_url, 'git@github.com:erikjohnmoreno/mapexperimenting-api.git'
 
 set :bundle_without, [:development, :test]
 set :ssh_options, { forward_agent: true }
