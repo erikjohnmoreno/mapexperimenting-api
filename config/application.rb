@@ -33,7 +33,7 @@ module AppApi
     config.api_only = true
 
     config.eager_load_paths << Rails.root.join('lib')
-    config.settings = YAML.load(File.read Rails.root.join('config', 'application.yml'))[Rails.env]
+    # config.settings = YAML.load(File.read Rails.root.join('config', 'application.yml'))[Rails.env]
 
     config.action_mailer.delivery_method = :sparkpost
 
