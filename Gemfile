@@ -8,6 +8,7 @@ gem 'bcrypt'
 gem 'jwt'
 gem 'fast_jsonapi'
 gem 'sparkpost_rails'
+gem 'figaro'
 gem 'ransack'
 gem 'rack-cors'
 gem 'bootsnap', '>= 1.1.0', require: false
